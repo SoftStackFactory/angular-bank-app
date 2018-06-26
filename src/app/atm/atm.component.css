@@ -1,0 +1,23 @@
+
+.main {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.display {
+  flex-basis: 50vw;
+  background-color: darkslategrey;
+  color: white;
+}
+
+.options {
+  flex-basis: 50vw;
+}
+
+.options-list {
+  list-style: none;
+}
+
+.options-item {
+
+}
