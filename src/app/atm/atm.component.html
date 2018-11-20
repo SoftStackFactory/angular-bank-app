@@ -1,11 +1,15 @@
 <h1>ATM View</h1>
 <div class="main">
   <section class="display">
-    > Welcome, Henry!
-    <!-- Display Feedback information here -->
+    > Welcome, Henry!<br>
+    > How can we help you today?
+    <!-- Below is a section that conditionally displays the account balance when the balance button is pressed -->
+    <div *ngIf="display === 'balance'">
+      <p>Your current balance is:</p>
+      <p>{{_bank.account.balance}}</p>
+    </div>
   </section>
   <aside class="options">
-    <!-- Add functionality to the buttons below -->
     <ul class="options-list">
       <li class="options-item">
         <!-- input utilizing two way binding to save input value -->
@@ -20,7 +24,8 @@
         <button (click)="deposit()">Deposit Money</button>
       </li>
       <li class="options-item">
-        <button>Balance Inquiry</button>
+        <!-- Click event binding that updates component variable to meet condition above and displays the account balance. -->
+        <button (click)="display = 'balance'">Balance Inquiry</button>
       </li>
       <li class="options-item">
         <button>Transactions History</button>
