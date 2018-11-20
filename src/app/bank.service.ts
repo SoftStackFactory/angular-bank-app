@@ -17,26 +17,7 @@ export class BankService {
     },
     balance: 0.01,
     currency: 'usd',
-    transactions: [
-      {
-        date: '01-01-01',
-        type: 'withdrawal',
-        amount: 200.00,
-        currency: 'usd'
-      },
-      {
-        date: '02-02-02',
-        type: 'deposit',
-        amount: 100.00,
-        currency: 'usd'
-      },
-      {
-        date: '03-03-03',
-        type: 'withdrawal',
-        amount: 2.00,
-        currency: 'usd'
-      }
-    ]
+    transactions: []
   };
 
   constructor() { }
@@ -44,6 +25,16 @@ export class BankService {
 // It takes paramater so we can pass the input value to the service.
   updateBalance(amount) {
     this.account.balance += amount
+  }
+
+//Funciton to add new transaction objects to the account transaction history.
+  addTransaction(type, amount) {
+    this.account.transactions.push({
+      date: Date.now(),
+      type: type,
+      amount: amount,
+      currency: 'usd',
+    })
   }
 
 

@@ -16,18 +16,16 @@ export class AtmComponent {
 // note: we are passing the negative of the value to decrease the balance.
 // Currently we are using console.log to ensure that the account balance is properly updated.
   withdraw() {
-    console.log('before', this._bank.account.balance)
     this._bank.updateBalance(-this.value)
-    console.log('after', this._bank.account.balance)
+    this._bank.addTransaction('withdrawal', this.value)
     this.value = null;
   }
 
 // Conected to the deposit button this passes the input value into the updateBalance method from the service.
 // Currently we are using console.log to ensure that the account balance is properly updated.
   deposit() {
-    console.log('before', this._bank.account.balance)
     this._bank.updateBalance(this.value)
-    console.log('after', this._bank.account.balance)
+    this._bank.addTransaction('deposit', this.value)
     this.value = null;
   }
 

@@ -6,7 +6,18 @@
     <!-- Below is a section that conditionally displays the account balance when the balance button is pressed -->
     <div *ngIf="display === 'balance'">
       <p>Your current balance is:</p>
-      <p>{{_bank.account.balance}}</p>
+      <!-- '| number' is an angular pipe to formate the number displayed.  here the pipe will formate our numbers to always have 
+      2 numbers havter the decimal.  Ie, 100.00 or 5.43 -->
+      <p>{{_bank.account.balance | number: '.2-2'}}</p>
+    </div>
+    <!-- Below is a section that conditionally displays the account balance when the balance button is pressed -->
+    <div *ngIf="display === 'transactions'">
+      <!-- *ngFor to loop through array on the service.  '| slice' is an angular pipe that works like the Array.slice() method 
+      Also including the ternary so we are only slicing the array if there are more than 3 transactions -->
+      <p *ngFor="let transaction of _bank.account.transactions | slice: _bank.account.transactions.length < 3? 0 : (_bank.account.transactions.length - 3)">
+        <!-- Here we are using the date and number pipes-->
+        {{transaction.date | date: MMDDYYY}} -- {{transaction.type}}: ${{transaction.amount | number: '.2-2'}}
+      </p>
     </div>
   </section>
   <aside class="options">
@@ -28,7 +39,7 @@
         <button (click)="display = 'balance'">Balance Inquiry</button>
       </li>
       <li class="options-item">
-        <button>Transactions History</button>
+        <button (click)="display = 'transactions'">Transactions History</button>
       </li>
     </ul>
   </aside>
