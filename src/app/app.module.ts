@@ -7,13 +7,15 @@ import { TellerComponent } from './teller/teller.component';
 
 import { routes } from './app.router';
 import { NavComponent } from './nav/nav.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AtmComponent,
     TellerComponent,
-    NavComponent
+    NavComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
