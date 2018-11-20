@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';  //required to use [(ngModel)]
 
 import { AppComponent } from './app.component';
 import { AtmComponent } from './atm/atm.component';
@@ -20,6 +21,7 @@ import { BankService } from './bank.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     routes
   ],
   providers: [BankService,],

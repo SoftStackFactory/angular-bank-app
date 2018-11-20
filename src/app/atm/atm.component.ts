@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./atm.component.css']
 })
 export class AtmComponent {
+  value: number;  //Variable connect to input.  Stores value for withdrwal or deposit
 
   constructor() { }
 
