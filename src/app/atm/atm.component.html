@@ -12,7 +12,8 @@
         $<input [(ngModel)]="value" name="value" type="number" placeholder="Ex. 20.00"> 
       </li>
       <li class="options-item">
-        <button>Make a Widthdrawl</button>
+        <!-- Here we utilize event bindig to call the widthdraw function when the button is pressed. -->
+        <button (click)="withdraw()">Make a Widthdrawl</button>
       </li>
       <li class="options-item">
         <button>Deposit Money</button>

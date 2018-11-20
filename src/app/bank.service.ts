@@ -39,6 +39,12 @@ export class BankService {
     ]
   };
 
-
   constructor() { }
+// Function that can be called from our component to update the account balance.
+// It takes paramater so we can pass the input value to the service.
+  updateBalance(amount) {
+    this.account.balance += amount
+  }
+
+
 }
