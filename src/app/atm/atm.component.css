@@ -18,6 +18,10 @@
   list-style: none;
 }
 
+.error {
+  color: red;
+}
+
 .options-item {
 
 }

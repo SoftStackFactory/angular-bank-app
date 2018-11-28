@@ -3,40 +3,68 @@
   <section class="display">
     > Welcome, Henry!<br>
     > How can we help you today?
+
+    <!-- Succesful withdrwal/deposit information -->
+    <div *ngIf="display === 'success'">
+
+      <p> {{transaction.msg}} </p>
+      <p> Transaction Amount: $ {{transaction.amount | number: '.2-2'}} </p>
+      <p> Previous Balance: $ {{transaction.previousBalance | number: '.2-2'}} </p>
+
+      <!-- Show text in red if balance is below 0 using a conditoinal class -->
+      <p [ngClass]='_bank.account.balance < 0 ? "error" : "great"'> Current Balance: $ {{_bank.account.balance | number: '.2-2'}} </p>
+    </div>
+
     <!-- Below is a section that conditionally displays the account balance when the balance button is pressed -->
     <div *ngIf="display === 'balance'">
+
       <p>Your current balance is:</p>
       <!-- '| number' is an angular pipe to formate the number displayed.  here the pipe will formate our numbers to always have 
       2 numbers havter the decimal.  Ie, 100.00 or 5.43 -->
       <p>{{_bank.account.balance | number: '.2-2'}}</p>
+
     </div>
     <!-- Below is a section that conditionally displays the account balance when the balance button is pressed -->
     <div *ngIf="display === 'transactions'">
+
       <!-- *ngFor to loop through array on the service.  '| slice' is an angular pipe that works like the Array.slice() method 
       Also including the ternary so we are only slicing the array if there are more than 3 transactions -->
       <p *ngFor="let transaction of _bank.account.transactions | slice: _bank.account.transactions.length < 3? 0 : (_bank.account.transactions.length - 3)">
+       
         <!-- Here we are using the date and number pipes-->
         {{transaction.date | date: MMDDYYY}} -- {{transaction.type}}: ${{transaction.amount | number: '.2-2'}}
       </p>
+
     </div>
   </section>
   <aside class="options">
     <ul class="options-list">
       <li class="options-item">
+
         <!-- input utilizing two way binding to save input value -->
         $<input [(ngModel)]="value" name="value" type="number" placeholder="Ex. 20.00"> 
+        
+      </li>
+
+      <!--Show error message if entering a anything but a number larger than 0  -->
+      <li *ngIf='invalidInput'>
+        <small  class='error'>Please input an amount greater than $0</small>
       </li>
       <li class="options-item">
+
         <!-- Here we utilize event bindig to call the widthdraw function when the button is pressed. -->
         <button (click)="withdraw()">Make a Widthdrawl</button>
       </li>
       <li class="options-item">
+
          <!-- Here we utilize event bindig to call the deposit function when the button is pressed. -->
         <button (click)="deposit()">Deposit Money</button>
       </li>
       <li class="options-item">
+
         <!-- Click event binding that updates component variable to meet condition above and displays the account balance. -->
         <button (click)="display = 'balance'">Balance Inquiry</button>
+
       </li>
       <li class="options-item">
         <button (click)="display = 'transactions'">Transactions History</button>

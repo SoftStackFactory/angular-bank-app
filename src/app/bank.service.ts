@@ -26,7 +26,6 @@ export class BankService {
   updateBalance(amount) {
     this.account.balance += amount
   }
-
 //Funciton to add new transaction objects to the account transaction history.
   addTransaction(type, amount) {
     this.account.transactions.push({
