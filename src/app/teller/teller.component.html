@@ -12,14 +12,18 @@
     <br><br>
     <!-- Display: if inquiring about transactions -->
     <h3>Last 3 Transactions</h3>
-    <p>[01-01-2018] -  Deposit ($20 USD)</p>
-    <p>[01-01-2018] -  Withdrawal ($40 USD)</p>
-    <p>[01-01-2018] -  Deposit ($20 USD)</p>
+      <!-- *ngFor to loop through array on the service.  '| slice' is an angular pipe that works like the Array.slice() method 
+      Also including the ternary so we are only slicing the array if there are more than 3 transactions -->
+      <p *ngFor="let transaction of _bank.account.transactions | slice: _bank.account.transactions.length < 3? 0 : (_bank.account.transactions.length - 3)">
+        
+        <!-- Here we are using the date and number pipes-->
+        {{transaction.date | date: MMDDYYY}} -- {{transaction.type}}: ${{transaction.amount | number: '.2-2'}}
+      </p>
   </section>
   <aside class="options">
     <section class="balance">
       <!-- Display customer balance -->
-      $20.00 USD
+      Customer Balance: {{_bank.account.balance}}
     </section>
     <!-- Add functionality to the buttons below -->
     <ul class="options-list">
