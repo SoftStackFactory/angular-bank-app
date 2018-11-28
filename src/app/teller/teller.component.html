@@ -3,11 +3,11 @@
   <section class="display">
     <!-- Display: Customer information except for when inquiring about transaction -->
     <h3>Customer Information</h3>
-    <p>Customer Name: First Last</p>
-    <p>Age: 100</p>
-    <p>Address: 1234 Test Lane.<br>
-      San Diego, CA 92000<br>
-      United States
+    <p>Customer Name: {{_bank.account.fname}} {{_bank.account.lname}} </p>
+    <p>Age: {{_bank.account.age}}</p>
+    <p>Address: {{_bank.account.address.street}}.<br>
+      {{_bank.account.address.city}}, {{_bank.account.address.state}} {{_bank.account.address.zip}}<br>
+      {{_bank.account.address.country}}
     </p>
     <br><br>
     <!-- Display: if inquiring about transactions -->

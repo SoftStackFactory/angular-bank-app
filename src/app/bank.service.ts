@@ -5,15 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class BankService {
   account: any = {
-    fname: 'first name',
-    lname: 'last name',
-    age: 0,
+    fname: 'Horatio',
+    lname: 'Vanderbuilt',
+    age: 58,
     address: {
       street: '1234 street st',
       city: 'city',
       state: 'state',
       zip: 12345,
-      country: 'canada'
+      country: 'U.S.A'
     },
     balance: 0.01,
     currency: 'usd',
