@@ -23,7 +23,7 @@
   <aside class="options">
     <section class="balance">
       <!-- Display customer balance -->
-      Customer Balance: {{_bank.account.balance}}
+      Customer Balance: {{_bank.account.balance | number: '.2-2'}}
     </section>
     <!-- Add functionality to the buttons below -->
     <ul class="options-list">
@@ -41,7 +41,7 @@
         <button (click)="withdraw()">Widthdrawl for Customer</button>
       </li>
       <li class="options-item">
-        <button>Deposit for Customer</button>
+        <button (click)="deposit()">Deposit for Customer</button>
       </li>
       <li class="options-item">
         <button>Customer Transaction History</button>

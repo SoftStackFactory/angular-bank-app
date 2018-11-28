@@ -23,4 +23,16 @@ export class TellerComponent {
     this.value = null; //empty input field
     this.invalidInput = false  //clear error message if one is being displayed
   }
+
+  deposit() {
+    //show error message if not given a number larger than 0
+    if (typeof this.value !== 'number' || this.value <= 0) {
+      return this.invalidInput = true
+    }
+    this._bank.updateBalance(this.value)
+    this._bank.addTransaction('deposit', this.value)
+    this.value = null;
+    this.invalidInput = false;
+  }
+
 }
