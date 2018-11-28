@@ -28,7 +28,17 @@
     <!-- Add functionality to the buttons below -->
     <ul class="options-list">
       <li class="options-item">
-        <button>Widthdrawl for Customer</button>
+
+        <!-- input utilizing two way binding to save input value -->
+        $<input [(ngModel)]="value" name="value" type="number" placeholder="Ex. 20.00"> 
+      </li>
+
+      <!--Show error message if entering a anything but a number larger than 0  -->
+      <li *ngIf='invalidInput'>
+          <small  class='error'>Please input an amount greater than $0</small>
+      </li>
+      <li class="options-item">
+        <button (click)="withdraw()">Widthdrawl for Customer</button>
       </li>
       <li class="options-item">
         <button>Deposit for Customer</button>
