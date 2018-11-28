@@ -10,15 +10,20 @@
       {{_bank.account.address.country}}
     </p>
     <br><br>
-    <!-- Display: if inquiring about transactions -->
-    <h3>Last 3 Transactions</h3>
+    <!-- update header with proper number of transactions to be displayed -->
+    <h3>Last {{numberOfTransactions}} Transactions</h3>
       <!-- *ngFor to loop through array on the service.  '| slice' is an angular pipe that works like the Array.slice() method 
-      Also including the ternary so we are only slicing the array if there are more than 3 transactions -->
-      <p *ngFor="let transaction of _bank.account.transactions | slice: _bank.account.transactions.length < 3? 0 : (_bank.account.transactions.length - 3)">
+      Also including the ternary so we are only slicing the array if there are more than transactions than we should be displaying -->
+      <p *ngFor="let transaction of _bank.account.transactions | slice: _bank.account.transactions.length < numberOfTransactions ? 0 : (_bank.account.transactions.length - numberOfTransactions)">
         
         <!-- Here we are using the date and number pipes-->
         {{transaction.date | date: MMDDYYY}} -- {{transaction.type}}: ${{transaction.amount | number: '.2-2'}}
       </p>
+
+      <p *ngIf="_bank.account.transactions.length === 0">
+        No Transactoin data available
+      </p>
+
   </section>
   <aside class="options">
     <section class="balance">
@@ -44,7 +49,7 @@
         <button (click)="deposit()">Deposit for Customer</button>
       </li>
       <li class="options-item">
-        <button>Customer Transaction History</button>
+        <button (click)='showMore()' [disabled]="_bank.account.transactions.length <= numberOfTransactions">More Transactions</button>
       </li>
     </ul>
   </aside>

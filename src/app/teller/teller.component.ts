@@ -10,6 +10,7 @@ import { BankService } from '../bank.service';
 export class TellerComponent {
   value: number;
   invalidInput: boolean = false
+  numberOfTransactions: number = 3  // number of transactoins to display in the list
 
   constructor(private _bank: BankService) { }
 
@@ -33,6 +34,11 @@ export class TellerComponent {
     this._bank.addTransaction('deposit', this.value)
     this.value = null;
     this.invalidInput = false;
+  }
+
+  //increase the number of transactions displayed
+  showMore() {
+    this.numberOfTransactions += 3
   }
 
 }
