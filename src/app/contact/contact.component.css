@@ -25,3 +25,13 @@ textarea {
 button {
   margin-top: 5px;
 }
+
+/* color the input files for valid or invalid */
+
+.error {
+  border: solid 1px red;
+}
+
+.valid {
+  border: solid 1px green;
+}

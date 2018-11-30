@@ -15,19 +15,57 @@
     <p>
       Contact@Banksd.com
     </p>
+
   </section>
   
   <section>
       <span>
         <h3>Contact Form</h3>
       </span>
+
+      <!--# creates a template variable to reference our ngform and allows us to pass to our function, ie onSubmit(contactForm).
+      ngSubmit is an angular event binding that is fired when a submit button is pressed in a form  -->
     <form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
       <label class="input-label">Name</label>
-      <input class="form-input" type="text" name="name" id="name" [(ngModel)]="_bank.formInput.name">
+      <!-- Here we are using two way binding as well as template (#) variables.  we are binding the value of the input filed to the
+      service and then using the template variable (#name) to reference the input validators, in this case 'required' 
+      If this field is not filled in then it will not be valid.
+      We are also setting conditional classes with [ngClass], this way we can dynamically add css if the field is valid or not.-->
+      <input class="form-input" type="text" name="name" 
+        id="name" [(ngModel)]="_bank.formInput.name" required
+        #name="ngModel"
+        [ngClass]="{
+          error: ((name.touched || name.dirty) || contactForm.submitted),
+          valid: name.valid
+        }"
+        >
+        <!-- text showing error message if invalid.  This is shown if the field is empty and has been changed before = 'dirty'
+        or the cursor was in the field and left = 'touched' or the form is submitted-->
+      <small *ngIf="name.invalid && (name.touched || contactForm.diry || contactForm.submitted)" style="color: red;">*The name field is required</small>
+
       <label class="input-label">Email</label>
-      <input class="form-input" type="text" name="email" id="email" [(ngModel)]="_bank.formInput.email">
+      <input class="form-input" type="text" name="email"
+        id="email" [(ngModel)]="_bank.formInput.email" required
+        #email='ngModel'
+        [ngClass]="{
+          error: ((email.touched || email.dirty) || contactForm.submitted),
+          valid: email.valid
+        }"
+        >
+      <small *ngIf="email.invalid && (email.touched || email.dirty || contactForm.submitted)" style="color: red;">*a valid email is required</small>
+
       <label class="input-label">Message</label>
-      <textarea class="form-input" name="msg" id="msg" [(ngModel)]="_bank.formInput.msg"></textarea>
+      <textarea class="form-input" name="msg" 
+      id="msg" [(ngModel)]="_bank.formInput.msg" required
+      #msg="ngModel"
+      [ngClass]="{
+        error: ((msg.touched || msg.dirty) || contactForm.submitted),
+        valid: msg.valid
+      }"
+      
+      ></textarea>
+      <small *ngIf="msg.invalid && (msg.touched || msg.dirty || contactForm.submitted)" style="color: red;">*How can we help you?</small>
+
       <button type="submit" >Submit</button>
     </form>
   </section>

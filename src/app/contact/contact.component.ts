@@ -13,8 +13,14 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    this._bank.sendForm()
+  onSubmit(form) {
+    //If form is valid send to be alerted
+    if (form.valid) {
+      this._bank.sendForm()
+      //reset form including submitted status and validators
+      form.resetForm()
+   }
+   
   }
 
 }

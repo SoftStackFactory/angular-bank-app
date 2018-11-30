@@ -20,7 +20,8 @@ export class BankService {
     transactions: []
   };
 
-  formInput: any = {  }
+  formInput: any = {}
+  invalid: boolean = false;
 
   constructor() { }
 // Function that can be called from our component to update the account balance.
@@ -39,6 +40,7 @@ export class BankService {
   }
 
   sendForm(){
+    //alert the contents the form
    alert( `
     Thank you for reaching out.  We have received the below message.
     Name: ${this.formInput.name},
@@ -46,8 +48,6 @@ export class BankService {
     Message: ${this.formInput.msg}
     `
    )
-
-   this.formInput = {}
   }
 
 
