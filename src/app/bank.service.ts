@@ -10,8 +10,8 @@ export class BankService {
     age: 58,
     address: {
       street: '1234 street st',
-      city: 'city',
-      state: 'state',
+      city: 'San Diego',
+      state: 'Ca',
       zip: 12345,
       country: 'U.S.A'
     },
@@ -19,6 +19,8 @@ export class BankService {
     currency: 'usd',
     transactions: []
   };
+
+  formInput: any = {  }
 
   constructor() { }
 // Function that can be called from our component to update the account balance.
@@ -34,6 +36,18 @@ export class BankService {
       amount: amount,
       currency: 'usd',
     })
+  }
+
+  sendForm(){
+   alert( `
+    Thank you for reaching out.  We have received the below message.
+    Name: ${this.formInput.name},
+    Email: ${this.formInput.email},
+    Message: ${this.formInput.msg}
+    `
+   )
+
+   this.formInput = {}
   }
 
 
