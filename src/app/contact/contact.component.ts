@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BankService } from '../bank.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +9,7 @@ import { BankService } from '../bank.service';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private _bank: BankService) { }
+  constructor(private _bank: BankService, private _router: Router) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,7 @@ export class ContactComponent implements OnInit {
       this._bank.sendForm()
       //reset form including submitted status and validators
       form.resetForm()
+      this._router.navigate(['/atm'])
    }
    
   }
