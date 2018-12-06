@@ -18,7 +18,15 @@ describe('AtmComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+  // describe('deposit', () => {
+  //   it('should increase balance on service when a user deposits', () => {
+  //     const compiled = fixture.debugElement.nativeElement;
+  //     expect(compiled.querySelectorAll('button').length).toEqual(4)
+  //   })
+  // })
+
+
 });
