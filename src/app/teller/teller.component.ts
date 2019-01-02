@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BankService } from '../bank.service';
 
-
 @Component({
   selector: 'app-teller',
   templateUrl: './teller.component.html',

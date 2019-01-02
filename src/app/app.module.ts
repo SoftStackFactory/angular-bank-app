@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AtmComponent } from './atm/atm.component';
 import { TellerComponent } from './teller/teller.component';
 
-import { routes } from './app.router';
+import { router } from './app.router';
 import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
 import { BankService } from './bank.service';
@@ -22,7 +22,7 @@ import { BankService } from './bank.service';
   imports: [
     BrowserModule,
     FormsModule,
-    routes
+    router,
   ],
   providers: [BankService,],
   bootstrap: [AppComponent]
