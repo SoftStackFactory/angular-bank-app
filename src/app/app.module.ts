@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AtmComponent } from './atm/atm.component';
 import { TellerComponent } from './teller/teller.component';
 
-import { routes } from './app.router';
+import { router } from './app.router';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { NavComponent } from './nav/nav.component';
   ],
   imports: [
     BrowserModule,
-    routes
+    router
   ],
   providers: [],
   bootstrap: [AppComponent]

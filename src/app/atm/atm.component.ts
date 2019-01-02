@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BankService } from '../bank.service';
 
 @Component({
   selector: 'app-atm',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AtmComponent {
 
-  constructor() { }
+  constructor(private _bank: BankService) { }
+
+  deposit(amount) {
+    this._bank.updateBalance(amount)
+    this._bank.addTransaction('deposit', amount)
+  }
+
+  withdraw(amount) {
+    this._bank.updateBalance(-amount)
+    this._bank.addTransaction('withdrawl', amount)
+  }
 
 }
