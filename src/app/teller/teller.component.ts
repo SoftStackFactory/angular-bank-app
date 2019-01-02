@@ -8,16 +8,6 @@ import { BankService } from '../bank.service';
 })
 export class TellerComponent {
 
-  constructor(private _bank: BankService) { }
-
-  withdraw(amount) {
-    this._bank.updateBalance(-amount)
-    this._bank.addTransaction('withdrawl', amount)
-  }
-
-  deposit(amount) {
-    this._bank.updateBalance(amount)
-    this._bank.addTransaction('deposit', amount)
-  }
+  constructor() { }
 
 }
