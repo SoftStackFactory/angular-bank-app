@@ -55,13 +55,8 @@ describe('router', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     router.initialNavigation();
-<<<<<<< HEAD
-  }));
-
-=======
   });
 //uses router to navigate to empty route, checks to ensure rerouted to /atm
->>>>>>> testing
   it('should redirect to /atm from ""', fakeAsync(() => {
     router.navigate(['']);
     tick();
@@ -70,10 +65,6 @@ describe('router', () => {
 
   //grabs array of links from nav bar, clicks link and checks to ensure navigation to the correct path.
   it('should correctly navigate when linked is clicked', fakeAsync(() => {
-<<<<<<< HEAD
-    fixture.detectChanges();
-=======
->>>>>>> testing
     const compiled = fixture.debugElement.nativeElement;
     const links = compiled.querySelectorAll('a')
     links[1].click()
