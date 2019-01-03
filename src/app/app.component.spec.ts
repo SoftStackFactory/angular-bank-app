@@ -63,6 +63,7 @@ describe('router', () => {
 
   //grabs array of links from nav bar, clicks link and checks to ensure navigation to the correct path.
   it('should correctly navigate when linked is clicked', fakeAsync(() => {
+    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     const links = compiled.querySelectorAll('a')
     links[1].click()
