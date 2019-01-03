@@ -55,7 +55,8 @@ describe('router', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     router.initialNavigation();
-  });
+  }));
+
 //uses router to navigate to empty route, checks to ensure rerouted to /atm
   it('should redirect to /atm from ""', fakeAsync(() => {
     router.navigate(['']);
