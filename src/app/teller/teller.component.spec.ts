@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TellerComponent } from './teller.component';
 import { BankService } from '../bank.service';
 import { mockBankService } from '../../mocks/mockbank.service';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TellerComponent', () => {
   let component: TellerComponent;
@@ -12,7 +13,8 @@ describe('TellerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TellerComponent ]
+      declarations: [ TellerComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
 
     TestBed.overrideComponent(
@@ -34,21 +36,25 @@ describe('TellerComponent', () => {
   });
 
   it('should have a deposit function that updates the balance on the service', () => {
-    component.deposit(10)
+    component.value = 10
+    component.deposit()
     expect(componentService.account.balance).toEqual(10);
   })
 
   it('should have a withdraw funtcion that updates the balance on the service', () => {
-    component.withdraw(5)
+    component.value = 5
+    component.withdraw()
     expect(componentService.account.balance).toEqual(-5);
   })
 
   it('should record transaction history on the service', () => {
     let numOfTransactions = componentService.account.transactions.length;
-    component.deposit(1);
+    component.value = 1
+    component.deposit();
     let numNewTransactions = componentService.account.transactions.length - numOfTransactions;
     expect(numNewTransactions).toEqual(1);
-    component.withdraw(1);
+    component.value = 1
+    component.withdraw();
     numNewTransactions = componentService.account.transactions.length - numOfTransactions;
     expect(numNewTransactions).toEqual(2)
 });
