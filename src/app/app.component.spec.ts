@@ -39,7 +39,7 @@ describe('AppComponent', () => {
   });
 });
 
-describe('Router: App', () => {
+describe('router', () => {
 
   let location: Location
   let router: Router
