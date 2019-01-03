@@ -33,28 +33,39 @@ describe('AtmComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a deposit function that updates the balance on the service', () => {
-    component.value = 10
-    component.deposit()
-    expect(componentService.account.balance).toEqual(10);
+  describe('atm.withdraw', () => {
+
+    it('should have a withdraw funtcion that updates the balance on the service', () => {
+      component.value = 5
+      component.withdraw()
+      expect(componentService.account.balance).toEqual(-5);
+    })
   })
 
-  it('should have a withdraw funtcion that updates the balance on the service', () => {
-    component.value = 5
-    component.withdraw()
-    expect(componentService.account.balance).toEqual(-5);
+  describe('atm.deposit', () => {
+
+    it('should have a deposit function that updates the balance on the service', () => {
+      component.value = 10
+      component.deposit()
+      expect(componentService.account.balance).toEqual(10);
+    })
+
   })
 
-  it('should record transaction history on the service', () => {
-    let numOfTransactions = componentService.account.transactions.length;
-    component.value = 1;
-    component.deposit();
-    let numNewTransactions = componentService.account.transactions.length - numOfTransactions;
-    expect(numNewTransactions).toEqual(1);
-    component.value = 1;
-    component.withdraw();
-    numNewTransactions = componentService.account.transactions.length - numOfTransactions;
-    expect(numNewTransactions).toEqual(2)
-  })
+  describe('atm.transactions', () => {
 
+    it('should record transaction history on the service', () => {
+      let numOfTransactions = componentService.account.transactions.length;
+      component.value = 1;
+      component.deposit();
+      let numNewTransactions = componentService.account.transactions.length - numOfTransactions;
+      expect(numNewTransactions).toEqual(1);
+      component.value = 1;
+      component.withdraw();
+      numNewTransactions = componentService.account.transactions.length - numOfTransactions;
+      expect(numNewTransactions).toEqual(2)
+    })
+
+
+  })
 });
