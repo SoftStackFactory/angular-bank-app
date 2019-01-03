@@ -29,14 +29,6 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
-  it('should render title in a h1 tag',() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    // expect(compiled.querySelector('a')).toBeTruthy();
-    expect(compiled.querySelector('h1').textContent).toContain(app.bankName);
-  });
 });
 
 describe('router', () => {
@@ -63,16 +55,25 @@ describe('router', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     router.initialNavigation();
+<<<<<<< HEAD
   }));
 
+=======
+  });
+//uses router to navigate to empty route, checks to ensure rerouted to /atm
+>>>>>>> testing
   it('should redirect to /atm from ""', fakeAsync(() => {
     router.navigate(['']);
     tick();
     expect(location.path()).toBe('/atm');
   }));
 
+  //grabs array of links from nav bar, clicks link and checks to ensure navigation to the correct path.
   it('should correctly navigate when linked is clicked', fakeAsync(() => {
+<<<<<<< HEAD
     fixture.detectChanges();
+=======
+>>>>>>> testing
     const compiled = fixture.debugElement.nativeElement;
     const links = compiled.querySelectorAll('a')
     links[1].click()
