@@ -17,7 +17,7 @@ import { BankService } from './bank.service';
     AtmComponent,
     TellerComponent,
     NavComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

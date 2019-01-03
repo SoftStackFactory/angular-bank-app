@@ -3,12 +3,13 @@ import { AppComponent } from './app.component';
 import { Location } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from "@angular/router/testing";
-import { Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { routes } from './app.router';
 import { AtmComponent } from './atm/atm.component';
 import { TellerComponent } from './teller/teller.component';
 import { ContactComponent } from './contact/contact.component';
 import { NavComponent } from './nav/nav.component';
+import { FormsModule } from '@angular/forms';
 
 
 describe('AppComponent', () => {
@@ -44,13 +45,14 @@ describe('Router: App', () => {
   let router: Router
   let fixture;
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [RouterTestingModule.withRoutes(routes), FormsModule],
       declarations: [
         AtmComponent,
         TellerComponent,
         NavComponent,
+        ContactComponent,
         AppComponent
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
@@ -61,7 +63,7 @@ describe('Router: App', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     router.initialNavigation();
-  });
+  }));
 
   it('should redirect to /atm from ""', fakeAsync(() => {
     router.navigate(['']);
@@ -70,7 +72,7 @@ describe('Router: App', () => {
   }));
 
   it('should correctly navigate when linked is clicked', fakeAsync(() => {
-    // fixture.detectChanges();
+    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     const links = compiled.querySelectorAll('a')
     links[1].click()
