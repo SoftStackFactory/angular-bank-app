@@ -43,6 +43,7 @@ describe('router', () => {
         AtmComponent,
         TellerComponent,
         NavComponent,
+        ContactComponent,
         AppComponent
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
